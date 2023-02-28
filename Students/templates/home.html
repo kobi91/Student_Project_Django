@@ -1,0 +1,42 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <title>Link CSS to HTML</title>          
+            <link rel="stylesheet" href=../static/style_home.css />
+        </head>
+        <body>
+        <header>
+        <h2>John Bryce</h2>
+        </header>
+        <a href="{% url 'login' %}"><button type="button" class="TButton">Login</button></a>
+        <section>
+        <nav>
+            <ul>
+            <li><a href="{% url 'students_table' %}">Students</a></li>
+            <p>
+            <li><a href="{% url 'courses_table' %}">Courses</a></li>
+            <p>
+            <li><a href="{% url 'statistics_table' %}">Statistics</a></li>
+            <p>
+            <li><a href="{% url 'about' %}">About</a></li>
+            </ul>
+        </nav>
+        
+        <article>
+            <h1>Message:</h1>
+            <p>The most popular course: {{ most_popular_course }}!</p>
+        </article>
+        </section>
+
+        <footer>
+        <p>Contact: johnbryce@gmail.com</p>
+        </footer>
+
+        </body>
+        </html>
+        
