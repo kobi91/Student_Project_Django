@@ -1,11 +1,10 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from Students.models import Student, Course, Teacher
 
 class StudentForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = '__all__'
+        fields = ['name', 'age', 'id', 'address', 'phone', 'email', 'course']
         
 class CourseForm(forms.ModelForm):
     class Meta:

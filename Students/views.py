@@ -29,7 +29,7 @@ def about(request):
 #--------------- L O G I N / L O G O U T ---------------#
 
 def user_login(request):
-    if request.method=='POST':
+    if request.method == 'POST':
         username = request.POST.get("username")
         password = request.POST.get("password")
         user = authenticate(request, username=username, password=password)
@@ -51,7 +51,7 @@ def user_logout(request):
 #-------------- R E G I S T E R A T I O N --------------#
 
 def register(request):
-    if request.method=='POST':    
+    if request.method == 'POST':    
         username = request.POST["username"]
         password = request.POST["password"]
         id_ = request.POST["id_"]
@@ -77,3 +77,42 @@ def register(request):
 @login_required
 def manager(request):
     return render(request, "manager.html")
+
+@login_required
+def manage_students(request):  
+    students = Student.objects.all().values_list() 
+    return render(request, "manage_students.html", {'students': students, "courses": ['Python','Java']})     
+ 
+@login_required 
+def add_student(request):
+    if request.method == 'POST':
+        try:
+            student_data = {k:v.title() for k,v in request.POST.items()}       
+            students = Student(**student_data)
+            students.save()
+        except:
+            messages.error(request, "Please make sure all fields are filled in correctly.")      
+    return redirect('manage_students')
+
+
+#-------------- T E A C H E R  P A N E L ---------------#
+
+@login_required
+def teacher(request):
+    return render(request, "teacher.html")
+
+
+
+
+def update(request, id):
+   emp = Student.objects.get(pk = id)
+   emp.name = request.POST.get('name')
+   emp.save()
+   return HttpResponse('updated')
+
+def delete(id):
+   emp = Student.objects.get(pk = id)
+   emp.delete()
+   return HttpResponse('deleted')
+
+

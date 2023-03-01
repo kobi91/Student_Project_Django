@@ -12,14 +12,7 @@
           <h2>Teacher Panel</h2>
                 
           <a href="/logout"><button type="button" class="TButton">Logout</button></a>
-          
-          {% for course, statistics in course_statistics.items() %}
-               <a style="font-size: 120%;">Course: {{course}}&nbsp&nbsp</a>
-               <a style="font-size: 120%;">Students Number: {{statistics[0]}}&nbsp</a>
-               <a style="font-size: 120%;">Average Grade: {{statistics[1]}}&nbsp</a>
-               <a style="font-size: 120%;">Passed Percentage: {{statistics[2]}}</a><br>
-          {% endfor %}             
-
+                      
           <form action="/teacher/sorting_students" method="POST">
                <div class="sorting">
                <label for="sort">Sorted by:</label>
