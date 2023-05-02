@@ -33,7 +33,7 @@
                     </select> 
                </div>
                <input type="submit" value="Add Student" class="IButton"> 
-               <a href="/manage_students/delete_students"><button type="button" class="RButton">Delete Students</button></a>       
+               <a href="manage_students/delete_students"><button type="button" class="RButton">Delete Students</button></a>       
           </form>        
           <a href="/manager"><button type="button" class="TButton">Back</button></a>
           
@@ -54,7 +54,7 @@
      <ul>          
           {% for name,age,id,address,phone,email,course,grade,missing in students %}       
                <div>
-               <form action="/manage_students/delete_student" method="POST">    
+               <form action="manage_students/delete_student" method="POST">    
                     <a class="bold">Student Name: {{name}}</a><br>
                     <a>Age: {{age}}&nbsp</a>
                     <a>ID: {{id}}&nbsp</a> 

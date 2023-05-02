@@ -94,6 +94,13 @@ def add_student(request):
             messages.error(request, "Please make sure all fields are filled in correctly.")      
     return redirect('manage_students')
 
+@login_required 
+def delete_student(request):
+    id = request.POST["student"]
+    student = Student.objects.get(pk = id)
+    student.delete()
+    return HttpResponse('deleted')
+
 
 #-------------- T E A C H E R  P A N E L ---------------#
 
